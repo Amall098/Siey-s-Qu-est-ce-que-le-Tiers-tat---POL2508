@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sieyès : Qu'est-ce que le Tiers État ? - Exploration Interactive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .chart-container {
+            min-height: 250px;
+            max-height: 400px;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        .layer-box {
+            transition: all 0.3s ease;
+        }
+        .layer-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .estate-box {
+            transition: all 0.3s ease;
+        }
+        .estate-box:hover {
+            transform: scale(1.02);
+        }
+        .contemporary-echo {
+            background-color: #f5f3ff;
+            border-left: 4px solid #6366f1;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans leading-relaxed">
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- En-tête -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Sieyès et "Qu'est-ce que le Tiers État ?"</h1>
+            <h2 class="text-2xl text-gray-600 mb-6">Une exploration analytique et interactive (1789)</h2>
+            <div class="bg-blue-50 border-l-4 border-blue-600 p-5 mb-6 text-left rounded-r-lg shadow-sm">
+                <p class="text-lg text-blue-900 font-medium">
+                    Que se passe-t-il lorsque 98 % de la population accomplit l'essentiel du travail productif, mais ne détient aucun pouvoir politique légitime ?
+                </p>
+                <p class="text-blue-800 mt-2">
+                    Explorez comment les idées révolutionnaires de l'abbé Emmanuel-Joseph Sieyès ont bouleversé l'ordre social français et jeté les bases théoriques de l'Assemblée nationale et de l'État moderne.
+                </p>
+            </div>
+        </header>
+
+        <!-- Navigation par Niveaux -->
+        <div class="mb-8">
+            <div class="flex flex-wrap justify-center gap-3" id="layerTabs">
+                <button class="layer-tab px-6 py-3 bg-blue-700 text-white rounded-lg font-semibold transition-colors shadow" data-layer="1">
+                    Niveau 1 : Structure Sociale
+                </button>
+                <button class="layer-tab px-6 py-3 bg-white text-gray-700 border border-gray-200 hover:bg-gray-100 rounded-lg font-semibold transition-colors shadow-sm" data-layer="2">
+                    Niveau 2 : Cadre Conceptuel
+                </button>
+                <button class="layer-tab px-6 py-3 bg-white text-gray-700 border border-gray-200 hover:bg-gray-100 rounded-lg font-semibold transition-colors shadow-sm" data-layer="3">
+                    Niveau 3 : Théorie Constitutionnelle
+                </button>
+                <button class="layer-tab px-6 py-3 bg-white text-gray-700 border border-gray-200 hover:bg-gray-100 rounded-lg font-semibold transition-colors shadow-sm" data-layer="4">
+                    Niveau 4 : Résolution Politique
+                </button>
+            </div>
+        </div>
+
+        <!-- Niveau 1 : Structure Sociale -->
+        <div id="layer1" class="layer-content">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">La Structure Sociale de la France d'Ancien Régime</h3>
+                <p class="text-gray-700 mb-6">Avant 1789, la France était divisée en trois "Ordres" (ou États). Le Tiers État remplissait toutes les fonctions utiles à la société, mais subissait une exclusion politique totale.</p>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Diagramme des Trois Ordres -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-800">Les Trois Ordres</h4>
+                        <div class="space-y-4">
+                            <!-- Premier Ordre -->
+                            <div class="estate-box bg-purple-50 border border-purple-200 rounded-lg p-4 shadow-sm">
+                                <div class="flex justify-between items-center mb-2">
+                                    <div>
+                                        <h5 class="font-bold text-purple-900 text-lg">Le Clergé</h5>
+                                        <p class="text-sm font-medium text-purple-700">~ 1 % de la population</p>
+                                    </div>
+                                </div>
+                                <ul class="text-sm text-purple-800 space-y-1">
+                                    <li>• Exempté de la taille (impôt principal)</li>
+                                    <li>• Possédait environ 10 % des terres</li>
+                                    <li>• Perceveait la dîme</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Second Ordre -->
+                            <div class="estate-box bg-indigo-50 border border-indigo-200 rounded-lg p-4 shadow-sm">
+                                <div class="flex justify-between items-center mb-2">
+                                    <div>
+                                        <h5 class="font-bold text-indigo-900 text-lg">La Noblesse</h5>
+                                        <p class="text-sm font-medium text-indigo-700">~ 2 % de la population</p>
+                                    </div>
+                                </div>
+                                <ul class="text-sm text-indigo-800 space-y-1">
+                                    <li>• Exemptée de la majorité des impôts</li>
+                                    <li>• Monopole des hauts grades militaires et politiques</li>
+                                    <li>• Possédait environ 25 % des terres</li>
+                                </ul>
+                            </div>
+                            
+                            <!-- Tiers État -->
+                            <div class="estate-box bg-green-50 border border-green-200 rounded-lg p-4 shadow-sm">
+                                <div class="flex justify-between items-center mb-2">
+                                    <div>
+                                        <h5 class="font-bold text-green-900 text-lg">Le Tiers État</h5>
+                                        <p class="text-sm font-medium text-green-700">~ 97 % de la population</p>
+                                    </div>
+                                </div>
+                                <ul class="text-sm text-green-800 space-y-1">
+                                    <li>• Supportait l'essentiel de la charge fiscale</li>
+                                    <li>• Fournissait tout le travail productif (agriculture, commerce)</li>
+                                    <li>• Aucune représentation politique effective</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Graphique Démographie vs Pouvoir -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-800">Démographie vs Représentation aux États Généraux</h4>
+                        <div class="chart-container">
+                            <canvas id="populationPowerChart"></canvas>
+                        </div>
+                        <div class="mt-4 p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-r">
+                            <p class="text-sm text-yellow-900">
+                                <strong>La faille du système :</strong> Lors du vote "par ordre" aux États Généraux, le Clergé (1 voix) et la Noblesse (1 voix) pouvaient toujours s'allier pour bloquer le Tiers État (1 voix), malgré son poids démographique écrasant.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Écho Contemporain 1 -->
+                <div class="contemporary-echo">
+                    <h4 class="font-bold text-indigo-900 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Écho contemporain : La sociologie de la représentation
+                    </h4>
+                    <p class="text-gray-700 text-sm">
+                        La critique de Sieyès sur le décalage entre le <strong>poids social</strong> et le <strong>poids politique</strong> trouve un écho dans les démocraties actuelles. Aujourd'hui, bien que les ouvriers et les employés représentent la majorité de la population active (environ 50% en France ou au Canada), ils n'occupent qu'une infime minorité des sièges au Parlement (souvent moins de 5 à 10%). À l'inverse, les cadres et professions intellectuelles y sont surreprésentés. Ce déficit de représentativité sociologique nourrit souvent le sentiment contemporain d'une élite "déconnectée" des réalités du "vrai pays".
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Niveau 2 : Cadre Conceptuel -->
+        <div id="layer2" class="layer-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Le Cadre Conceptuel : La Nation contre le Privilège</h3>
+                <p class="text-gray-700 mb-6">Sieyès ne fait pas que protester ; il redéfinit entièrement le vocabulaire politique. Il oppose de manière binaire l'idée universelle de la <em>Nation</em> à l'idée exclusive du <em>Privilège</em>.</p>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Définitions clés -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-800">Définitions Fondamentales</h4>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r">
+                                <h5 class="font-bold text-blue-900">La Nation</h5>
+                                <p class="text-sm text-blue-800 italic mt-1">« Un corps d'associés vivant sous une loi commune et représentés par la même législature. »</p>
+                                <p class="text-xs text-blue-700 mt-2">Pour Sieyès, la Nation n'est pas basée sur le sang ou l'histoire, mais sur l'égalité juridique et la contribution à l'effort commun.</p>
+                            </div>
+                            
+                            <div class="bg-red-50 border-l-4 border-red-600 p-4 rounded-r">
+                                <h5 class="font-bold text-red-900">Le Privilège</h5>
+                                <p class="text-sm text-red-800 italic mt-1">Une dispense, une exception à la loi commune.</p>
+                                <p class="text-xs text-red-700 mt-2">Celui qui possède un privilège se place de lui-même <em>en dehors</em> de la loi commune, et donc, par définition, en dehors de la Nation.</p>
+                            </div>
+                            
+                            <div class="bg-gray-100 border-l-4 border-gray-500 p-4 rounded-r">
+                                <h5 class="font-bold text-gray-800">Les Ordres Privilégiés</h5>
+                                <p class="text-sm text-gray-700 mt-1">Parce qu'ils réclament des droits particuliers et refusent la loi commune, la Noblesse et le haut Clergé sont considérés par Sieyès comme des "corps étrangers" à la Nation.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Carte Conceptuelle Interactive -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-800">Carte Conceptuelle Interactive</h4>
+                        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                            <p class="text-sm text-gray-600 mb-4 text-center">Cliquez sur un concept pour explorer sa logique selon Sieyès.</p>
+                            <div class="flex flex-wrap justify-center gap-3">
+                                <button class="concept-btn bg-blue-100 hover:bg-blue-200 text-blue-800 font-semibold px-4 py-2 rounded-lg transition" data-concept="nation">
+                                    La Nation
+                                </button>
+                                <button class="concept-btn bg-red-100 hover:bg-red-200 text-red-800 font-semibold px-4 py-2 rounded-lg transition" data-concept="privilege">
+                                    Le Privilège
+                                </button>
+                                <button class="concept-btn bg-green-100 hover:bg-green-200 text-green-800 font-semibold px-4 py-2 rounded-lg transition" data-concept="loi">
+                                    La Loi Commune
+                                </button>
+                                <button class="concept-btn bg-purple-100 hover:bg-purple-200 text-purple-800 font-semibold px-4 py-2 rounded-lg transition" data-concept="tiers">
+                                    Le Tiers État
+                                </button>
+                            </div>
+                            <div id="conceptExplanation" class="mt-6 p-5 bg-white border border-gray-200 rounded-lg min-h-[120px] shadow-sm">
+                                <p class="text-gray-500 text-center italic mt-4">Sélectionnez un terme ci-dessus.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Écho Contemporain 2 -->
+                <div class="contemporary-echo">
+                    <h4 class="font-bold text-indigo-900 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Écho contemporain : Le Privilège à l'ère de la mondialisation
+                    </h4>
+                    <p class="text-gray-700 text-sm">
+                        La notion de "privilège" (littéralement : <em>priva lex</em>, une loi privée) résonne fortement aujourd'hui dans les débats sur <strong>l'évasion fiscale</strong> et les paradis fiscaux. Lorsqu'une très grande entreprise multinationale ou un ultra-riche utilise des montages juridiques complexes pour échapper à l'impôt commun que paient les citoyens ordinaires (le Tiers État moderne), on retrouve la logique de Sieyès : l'acteur privilégié s'abstrait de la contrainte commune. Sur le plan conceptuel, s'exempter de la charge fiscale commune équivaut, selon la logique de Sieyès, à se retirer de la "Nation", puisque la Nation suppose la soumission égale de tous à la même loi.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Niveau 3 : Théorie Constitutionnelle -->
+        <div id="layer3" class="layer-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">Théorie Constitutionnelle : Le Pouvoir Constituant</h3>
+                <p class="text-gray-700 mb-6">L'apport intellectuel le plus durable de Sieyès à la science politique est la distinction stricte entre le pouvoir qui *crée* la Constitution et les pouvoirs qui sont *créés par* elle.</p>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Hiérarchie des Pouvoirs -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-800">Les Deux Types de Pouvoirs</h4>
+                        <div class="space-y-4">
+                            <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r shadow-sm">
+                                <h5 class="font-bold text-amber-900 text-lg">Le Pouvoir Constituant</h5>
+                                <p class="text-sm font-medium text-amber-800 mb-2">Le pouvoir originel et souverain.</p>
+                                <ul class="text-sm text-amber-900 space-y-1">
+                                    <li>• Il appartient <strong>exclusivement à la Nation</strong>.</li>
+                                    <li>• Il précède toute Constitution et n'est limité par aucune loi.</li>
+                                    <li>• C'est le pouvoir de choisir la forme de son gouvernement.</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-teal-50 border-l-4 border-teal-500 p-4 rounded-r shadow-sm">
+                                <h5 class="font-bold text-teal-900 text-lg">Les Pouvoirs Constitués</h5>
+                                <p class="text-sm font-medium text-teal-800 mb-2">Les pouvoirs dérivés, créés par la Constitution.</p>
+                                <ul class="text-sm text-teal-900 space-y-1">
+                                    <li>• Le Roi (Exécutif), les Parlements, les Tribunaux.</li>
+                                    <li>• Ils sont strictement limités par la Constitution.</li>
+                                    <li>• Ils sont soumis à la Nation et ne peuvent modifier leur propre mandat.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Simulateur de Pouvoir -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-4 text-blue-800">Le Rapports de Force (Simulateur)</h4>
+                        <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                            <p class="text-sm text-gray-600 mb-6">Ajustez le curseur pour observer le passage de l'Ancien Régime à la Révolution.</p>
+                            
+                            <div class="mb-6">
+                                <label class="block text-sm font-bold text-gray-700 mb-2 flex justify-between">
+                                    <span>Souveraineté reconnue à la Nation (Tiers État) :</span>
+                                    <span id="constituentValue" class="text-amber-600">0%</span>
+                                </label>
+                                <input type="range" id="constituentSlider" min="0" max="100" value="0" 
+                                       class="w-full h-3 bg-gray-300 rounded-lg appearance-none cursor-pointer accent-amber-500">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label class="block text-sm font-bold text-gray-700 mb-2 flex justify-between">
+                                    <span>Pouvoir absolu du Roi et des Ordres :</span>
+                                    <span id="constitutedValue" class="text-teal-600">100%</span>
+                                </label>
+                                <div class="w-full h-3 bg-teal-500 rounded-lg">
+                                    <div id="constitutedBar" class="h-full bg-gray-300 rounded-r-lg" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            
+                            <div id="powerBalanceResult" class="p-4 bg-red-50 border-l-4 border-red-500 rounded-r transition-all">
+                                <p class="text-red-800 font-bold text-lg">L'Ancien Régime</p>
+                                <p class="text-sm text-red-700 mt-1">Le Monarque détient le pouvoir absolu. La Nation n'a pas voix au chapitre.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Écho Contemporain 3 -->
+                <div class="contemporary-echo">
+                    <h4 class="font-bold text-indigo-900 mb-2 flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        Écho contemporain : L'appel à la 6e République et la Constituante
+                    </h4>
+                    <p class="text-gray-700 text-sm">
+                        La théorie du "Pouvoir constituant" est au cœur des revendications politiques radicales aujourd'hui. Lorsqu'en France, des mouvements politiques réclament une <strong>6ème République</strong> ou qu'au Chili (2020) le peuple exige la réécriture de la Constitution héritée de Pinochet, ils agissent exactement selon la théorie de Sieyès : ils affirment que le peuple souverain (le Pouvoir Constituant) a le droit inaliénable de dissoudre les institutions actuelles (les Pouvoirs Constitués) pour redéfinir entièrement les règles du jeu politique via une Assemblée Constituante.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Niveau 4 : Résolution Politique -->
+        <div id="layer4" class="layer-content hidden">
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8 mb-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-4 border-b pb-2">La Résolution Politique : La Naissance de l'Assemblée Nationale</h3>
+                <p class="text-gray-700 mb-6">La théorie de Sieyès s'est transformée en acte juridique révolutionnaire lors des États Généraux de 1789, mettant fin à des siècles de monarchie absolue.</p>
+                
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Chronologie -->
+                    <div>
+                        <h4 class="text-xl font-semibold mb-6 text-blue-800">L'escalade de l'été 1789</h4>
+                        <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-blue-500 before:to-gray-200">
+                            
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    1
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-blue-50 p-4 rounded border border-blue-100 shadow-sm">
+                                    <h5 class="font-bold text-blue-900">5 Mai</h5>
+                                    <p class="text-sm text-gray-700">Ouverture des États Généraux. Le Roi maintient le vote par ordre (par classe) plutôt que par tête.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-blue-600 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    2
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-blue-50 p-4 rounded border border-blue-100 shadow-sm">
+                                    <h5 class="font-bold text-blue-900">10 Juin</h5>
+                                    <p class="text-sm text-gray-700">Sur l'impulsion de Sieyès, le Tiers État invite les autres ordres à le rejoindre pour vérifier les pouvoirs en commun.</p>
+                                </div>
+                            </div>
+
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-red-500 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    3
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-red-50 p-4 rounded border border-red-100 shadow-sm">
+                                    <h5 class="font-bold text-red-900">17 Juin</h5>
+                                    <p class="text-sm text-gray-800 font-medium">L'Acte Révolutionnaire</p>
+                                    <p class="text-sm text-gray-700">Le Tiers État se proclame officiellement "Assemblée Nationale". La souveraineté passe du Roi à la Nation.</p>
+                                </div>
+                            </div>
+
+                            <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                                <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-red-600 text-white font-bold shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                                    4
+                                </div>
+                                <div class="w-[calc(100%-3rem)] md:w-[calc(50%-2.5rem)] bg-red-50 p-4 rounded border border-red-100 shadow-sm">
+                                    <h5 class="font-bold text-red-900">20 Juin</h5>
+                                    <p class="text-sm text-gray-700">Serment du Jeu de Paume : L'Assemblée jure de ne pas se séparer avant d'avoir rédigé une Constitution.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- L'Acte Révolutionnaire (Comparaison) -->
+                    <div class="flex flex-col justify-center">
+                        <div class="bg-gray-50 border-2 border-gray-200 rounded-xl p-6 shadow-sm">
+                            <h4 class="text-xl font-bold text-gray-800 mb-6 text-center">Le Coup d'État Juridique</h4>
+                            
+                            <div class="space-y-6">
+                                <div class="bg-white p-4 rounded border-l-4 border-gray-400 shadow-sm">
+                                    <h5 class="font-bold text-gray-700 mb-2 uppercase text-sm tracking-wider">Avant le 17 Juin 1789</h5>
+                                    <ul class="text-sm text-gray-600 space-y-2">
+                                        <li>• Les députés représentent leur Ordre (mandat impératif).</li>
+                                        <li>• Le vote se fait "par Ordre" (Le Tiers est bloqué).</li>
+                                        <li>• La souveraineté réside dans la personne du Roi.</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="flex justify-center">
+                                    <svg class="w-8 h-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                                </div>
+
+                                <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-500 shadow-sm">
+                                    <h5 class="font-bold text-blue-800 mb-2 uppercase text-sm tracking-wider">Après le 17 Juin 1789</h5>
+                                    <ul class="text-sm text-blue-900 space-y-2">
+                                        <li>• Les députés représentent l'ensemble de la Nation (mandat représentatif).</li>
+                                        <li>• Le vote se fait "par Tête" (majorité absolue).</li>
+                                        <li>• La souveraineté réside dans la Nation.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer / Résumé -->
+        <div class="mt-8 bg-slate-800 text-white rounded-xl shadow-lg p-8 text-center">
+            <h3 class="text-2xl font-bold mb-4">La Synthèse de Sieyès</h3>
+            <p class="text-slate-300 max-w-3xl mx-auto italic text-lg font-serif">
+                « Qu'est-ce que le Tiers État ? TOUT.<br>
+                Qu'a-t-il été jusqu'à présent dans l'ordre politique ? RIEN.<br>
+                Que demande-t-il ? À Y DEVENIR QUELQUE CHOSE. »
+            </p>
+            <p class="text-slate-400 text-sm mt-6 uppercase tracking-widest">Université d'Ottawa - POL2508 Pensée Politique Moderne I</p>
+        </div>
+    </div>
+
+    <script>
+        // Variables globales pour les graphiques
+        let populationPowerChart;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            initTabs();
+            initCharts();
+            initConceptMap();
+            initPowerSimulator();
+        });
+
+        function initTabs() {
+            const tabs = document.querySelectorAll('.layer-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const targetId = this.getAttribute('data-layer');
+                    
+                    // Reset tab styles
+                    tabs.forEach(t => {
+                        t.classList.remove('bg-blue-700', 'text-white');
+                        t.classList.add('bg-white', 'text-gray-700');
+                    });
+                    
+                    // Set active tab style
+                    this.classList.remove('bg-white', 'text-gray-700');
+                    this.classList.add('bg-blue-700', 'text-white');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.layer-content').forEach(content => {
+                        content.classList.add('hidden');
+                    });
+                    
+                    // Show target content
+                    document.getElementById(`layer${targetId}`).classList.remove('hidden');
+                });
+            });
+        }
+
+        function initCharts() {
+            const ctx = document.getElementById('populationPowerChart').getContext('2d');
+            populationPowerChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Le Clergé', 'La Noblesse', 'Le Tiers État'],
+                    datasets: [{
+                        label: 'Part de la Population (%)',
+                        data: [1, 2, 97],
+                        backgroundColor: 'rgba(59, 130, 246, 0.8)',
+                        borderColor: 'rgba(37, 99, 235, 1)',
+                        borderWidth: 1
+                    }, {
+                        label: 'Poids Politique (Vote par ordre) (%)',
+                        data: [33.3, 33.3, 33.3],
+                        backgroundColor: 'rgba(239, 68, 68, 0.8)',
+                        borderColor: 'rgba(220, 38, 38, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        function initConceptMap() {
+            const btns = document.querySelectorAll('.concept-btn');
+            const expl = document.getElementById('conceptExplanation');
+            
+            const concepts = {
+                nation: {
+                    title: "La Nation",
+                    text: "Pour Sieyès, la Nation existe avant l'État. C'est l'ensemble des individus qui acceptent de vivre sous une loi commune et de contribuer à l'effort collectif. Le Tiers État, parce qu'il accomplit tous les travaux utiles et accepte la loi commune, contient en lui-même tout ce qui est nécessaire pour former une nation complète."
+                },
+                privilege: {
+                    title: "Le Privilège",
+                    text: "Étymologiquement 'priva lex' (loi privée). C'est l'anti-Nation par excellence. Quiconque revendique un droit exclusif ou une exemption (ne pas payer l'impôt, être jugé par des tribunaux spéciaux) se sépare volontairement du corps commun. Le privilège est donc une trahison du pacte social."
+                },
+                loi: {
+                    title: "La Loi Commune",
+                    text: "C'est l'expression de la volonté de la Nation. Pour qu'elle soit légitime, la loi doit être la même pour tous, sans exception. Elle protège et oblige chaque citoyen de manière strictement égale. C'est la fin de la société hiérarchique basée sur la naissance."
+                },
+                tiers: {
+                    title: "Le Tiers État",
+                    text: "Selon Sieyès, le Tiers État n'est pas seulement un 'ordre' parmi d'autres. Puisqu'il regroupe 97% de la population et ne jouit d'aucun privilège, il EST la Nation. Les nobles et le clergé ne sont que des castes isolées et parasitaires."
+                }
+            };
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const key = btn.getAttribute('data-concept');
+                    expl.innerHTML = `
+                        <h5 class="text-lg font-bold text-gray-800 mb-2 border-l-4 border-blue-500 pl-3">${concepts[key].title}</h5>
+                        <p class="text-gray-700 leading-relaxed">${concepts[key].text}</p>
+                    `;
+                    
+                    // Reset buttons
+                    btns.forEach(b => b.classList.remove('ring-2', 'ring-offset-2', 'ring-blue-500'));
+                    btn.classList.add('ring-2', 'ring-offset-2', 'ring-blue-500');
+                });
+            });
+        }
+
+        function initPowerSimulator() {
+            const slider = document.getElementById('constituentSlider');
+            const constVal = document.getElementById('constituentValue');
+            const constBar = document.getElementById('constitutedBar');
+            const constedVal = document.getElementById('constitutedValue');
+            const resultBox = document.getElementById('powerBalanceResult');
+
+            slider.addEventListener('input', function() {
+                const val = parseInt(this.value);
+                const invVal = 100 - val;
+                
+                constVal.textContent = val + '%';
+                constedVal.textContent = invVal + '%';
+                constBar.style.width = val + '%'; // Inverse fill logic for visual effect
+
+                if (val < 30) {
+                    resultBox.className = 'p-4 bg-red-50 border-l-4 border-red-500 rounded-r transition-all';
+                    resultBox.innerHTML = `
+                        <p class="text-red-800 font-bold text-lg">L'Ancien Régime</p>
+                        <p class="text-sm text-red-700 mt-1">Le Monarque et les Ordres détiennent le pouvoir. Le Tiers État (la Nation) est politiquement "Rien".</p>
+                    `;
+                } else if (val < 80) {
+                    resultBox.className = 'p-4 bg-yellow-50 border-l-4 border-yellow-500 rounded-r transition-all';
+                    resultBox.innerHTML = `
+                        <p class="text-yellow-800 font-bold text-lg">La Période de Transition</p>
+                        <p class="text-sm text-yellow-700 mt-1">Monarchie constitutionnelle : La Nation partage le pouvoir avec le Roi (véto). Compromis fragile.</p>
+                    `;
+                } else {
+                    resultBox.className = 'p-4 bg-green-50 border-l-4 border-green-500 rounded-r transition-all';
+                    resultBox.innerHTML = `
+                        <p class="text-green-800 font-bold text-lg">Le Triomphe de la Nation (La République)</p>
+                        <p class="text-sm text-green-700 mt-1">La Nation exerce pleinement son pouvoir constituant. Le gouvernement n'est plus que son commis.</p>
+                    `;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+```
